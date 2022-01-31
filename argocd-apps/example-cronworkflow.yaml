@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: CronWorkflow
 metadata:
   name: test-cron-wf
-  namespace: argo
+  namespace: argocd
 spec:
   schedule: "* * * * *"
   concurrencyPolicy: "Replace"
