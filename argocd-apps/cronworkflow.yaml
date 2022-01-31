@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: CronWorkflow
 metadata:
   name: cron-workflow
-  namespace: argocd
+  namespace: argo
 spec:
   schedule: "*/5 * * * *"
   concurrencyPolicy: "Forbid"
