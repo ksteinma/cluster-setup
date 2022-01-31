@@ -1,0 +1,35 @@
+iapiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: cron-workflow
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: "Forbid"
+  startingDeadlineSeconds: 0
+  workflowSpec:
+    entrypoint: first-task
+    templates:
+    - name: execute-workflow
+      dag:
+        tasks:
+        - name: first-task
+          template: execute-curl
+          arguments:
+            parameters:
+            - name: external-url
+              value: "ifconfig.me"
+            - name: protocol
+              value: "https"
+    
+    - name: execute-curl
+      inputs:
+        parameters:
+        - name: external-url
+        - name: protocol
+      script:
+        image: alpine:3.6
+        command: ["sh"]
+        source: |
+          echo "Executing curl...";
+          curl "{{inputs.parameters.protocol}}://{{inputs.parameters.external-url}}";
+
