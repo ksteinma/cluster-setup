@@ -6,11 +6,11 @@ spec:
   schedule: "* * * * *"
   concurrencyPolicy: "Replace"
   startingDeadlineSeconds: 0
-    workflowSpec:
-      entrypoint: whalesay
-      templates:
-      - name: whalesay
-        container:
-          image: alpine:3.6
-          command: [sh, -c]
-          args: ["date; sleep 90"]
+  workflowSpec:
+    entrypoint: whalesay
+    templates:
+    - name: whalesay
+      container:
+        image: alpine:3.6
+        command: [sh, -c]
+        args: ["date; sleep 90"]
