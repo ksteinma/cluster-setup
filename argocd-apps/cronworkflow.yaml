@@ -28,7 +28,7 @@ spec:
         - name: external-url
         - name: protocol
       script:
-        image: alpine:3.6
+        image: alpine/curl:3.14
         command: ["sh"]
         source: |
           echo "Executing curl...";
