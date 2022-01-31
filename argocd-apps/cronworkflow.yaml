@@ -8,7 +8,7 @@ spec:
   concurrencyPolicy: "Forbid"
   startingDeadlineSeconds: 0
   workflowSpec:
-    entrypoint: first-task
+    entrypoint: execute-workflow
     templates:
     - name: execute-workflow
       dag:
