@@ -5,5 +5,7 @@ metadata:
   namespace: argo 
 data:
   get-cluster-info.sh: |
-    echo "Retrieving cluster info...";
-    kubectl get namespaces;
+    echo "Retrieving cluster info!";
+    echo "Listing non-Ready containers...";
+    kubectl --all-namespaces get pods -o jsonpath='{range .items[*]}{.status.containerStatuses[*].ready.false}{.metadata.name}{ "\n"}{end}';
+    
