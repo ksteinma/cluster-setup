@@ -56,5 +56,5 @@ spec:
         - name: script-vol
           mountPath: /scripts
         source: |
-          get-cluster-info.sh;
+          /scripts/get-cluster-info.sh;
 
