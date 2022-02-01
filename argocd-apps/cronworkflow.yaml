@@ -50,7 +50,7 @@ spec:
           name: script-configmap
           defaultMode: 0777
       script:
-              image: alpine/k8s:1.20.7
+        image: alpine/k8s:1.20.7
         command: ["sh"]
         volumeMounts:
         - name: script-vol
