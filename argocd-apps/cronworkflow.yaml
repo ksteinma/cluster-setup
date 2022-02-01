@@ -21,6 +21,12 @@ spec:
               value: "ifconfig.me"
             - name: protocol
               value: "https"
+        - name: second-task
+          template: execute-script
+          arguments:
+            parameters:
+            - name: filler
+              value: filler
     
     - name: execute-curl
       inputs:
@@ -33,4 +39,22 @@ spec:
         source: |
           echo "Executing curl...";
           curl "{{inputs.parameters.protocol}}://{{inputs.parameters.external-url}}";
+
+    - name: execute-script
+      inputs:
+        parameters:
+        - name: filler
+      volumes:
+      - name: script-vol
+        configMap:
+          name: script-configmap
+          defaultMode: 0777
+      script:
+        image: alpine:3.14.3
+        command: ["sh"]
+        volumeMounts:
+        - name: script-vol
+          mountPath: /scripts
+        source: |
+          ls /scripts;
 

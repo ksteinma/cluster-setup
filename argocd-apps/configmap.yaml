@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: script-configmap
+  namespace: 
+data:
+  script-one.sh: |
+    echo "script-one.sh"
+    date
+    sleep 1
+    echo "run /tmp/script-2.sh now"
+    /tmp/script-2.sh
+  script-2.sh: |
+    echo "script-2.sh"
+    sleep 1
+    date
