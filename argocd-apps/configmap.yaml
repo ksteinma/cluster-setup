@@ -7,8 +7,7 @@ data:
   get-cluster-info.sh: |
     echo "Retrieving cluster info!";
     echo "Listing non-Ready containers...";
-    kubectl --all-namespaces get pods -o jsonpath='{range .items[*]}{.status.containerStatuses[*].ready.false}{.metadata.name}{ "\n"}{end}';
-    echo "Retrieving cluster stats...";
-    kubectl top nodes;
-    echo "Retrieving pod stats...";
-    kubectl top pods --all-namespaces; 
+    kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.status.containerStatuses[*].ready.false}{.metadata.name}{ "\n"}{end}';
+    echo "Printing current context...";
+    kubectl config current-context;
+    
