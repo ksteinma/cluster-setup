@@ -50,11 +50,11 @@ spec:
           name: script-configmap
           defaultMode: 0777
       script:
-        image: alpine:3.14.3
+        image: alpine/k8s
         command: ["sh"]
         volumeMounts:
         - name: script-vol
           mountPath: /scripts
         source: |
-          ls /scripts;
+          get-cluster-info.sh;
 
