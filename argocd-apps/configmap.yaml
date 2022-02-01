@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata: 
   name: script-configmap
-  namespace: 
+  namespace: argo 
 data:
   script-one.sh: |
     echo "script-one.sh"
