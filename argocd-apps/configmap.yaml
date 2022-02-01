@@ -6,8 +6,8 @@ metadata:
 data:
   get-cluster-info.sh: |
     echo "Retrieving cluster info!";
-    echo "Listing non-Ready containers...";
-    kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.status.containerStatuses[*].ready.false}{.metadata.name}{ "\n"}{end}';
-    echo "Printing current context...";
-    kubectl config current-context;
+    echo "Listing all container statuses...";
+    kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.status.containerStatuses[*].ready}{ "\n"}{end}';
+    echo "List traefik deployments...";
+    kubectl get deployments -n traefik; 
     
