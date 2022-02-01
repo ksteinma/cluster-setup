@@ -8,4 +8,7 @@ data:
     echo "Retrieving cluster info!";
     echo "Listing non-Ready containers...";
     kubectl --all-namespaces get pods -o jsonpath='{range .items[*]}{.status.containerStatuses[*].ready.false}{.metadata.name}{ "\n"}{end}';
-    
+    echo "Retrieving cluster stats...";
+    kubectl top nodes;
+    echo "Retrieving pod stats...";
+    kubectl top pods --all-namespaces; 
