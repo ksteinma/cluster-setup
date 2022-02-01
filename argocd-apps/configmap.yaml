@@ -6,8 +6,10 @@ metadata:
 data:
   get-cluster-info.sh: |
     echo "Retrieving cluster info!";
+    echo "";
     echo "Listing all container statuses...";
     kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.status.containerStatuses[*].ready}{ "\n"}{end}';
+    echo "";
     echo "List traefik deployments...";
     kubectl get deployments -n traefik; 
     
